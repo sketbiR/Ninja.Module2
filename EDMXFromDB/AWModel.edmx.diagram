@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd7e7706646a4451b1254bb785e54ad1" Name="Diagram1">
+        <EntityTypeShape EntityType="CommitteesModel.WS_ATTENDEES" Width="1.5" PointX="11.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_COMMITTEE_CATEGORIES" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_COMMITTEE_PERMISSIONS" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_COMMITTEES" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_HR_ITEMS" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_ITEM_CATEGORIES" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_ITEM_FILES" Width="1.5" PointX="10.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_MEETING_ITEMS" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_MEETING_LOG" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_MEETINGS" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_OTHER_ITEMS" Width="1.5" PointX="10.5" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_ROLES" Width="1.5" PointX="3.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_STATUSES" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.WS_USERS" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.DB_SETTINGS" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.DEPARTMENTS_VW" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CommitteesModel.DIVISON_VW" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CommitteesModel.FK_COMMITTEE_PERMISSIONS_CODE" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_MEMEBER_APPR_WS_MEETINGS" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_COMMITEE_C_WS_COMMITTEES" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_COMMITEE_C_WS_ITEM_CATEG" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_MEETING_IT_WS_COMMITTEE_" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FINAL_APPROVER_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_COMMITTEES_MEMB_WS_ROLES" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_COMMITTEES_WS_COMMITTEES" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.REVIEWER_CODE_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_MEETINGS_WS_COMMITTEES" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_HR_ITEMS_WS_MEETING_ITE" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_MEETING_ITEM_CODE" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_MEETING_ITEM_WS_MEETINGS" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.FK_WS_OTHER_ITEM_WS_MEETING_IT" ManuallyRouted="false" />
+        <AssociationConnector Association="CommitteesModel.MEETING_CODE_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

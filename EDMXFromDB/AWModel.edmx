@@ -1,0 +1,1618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CommitteesModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'COMMITTEES_CUSTOM.DB_MSG_TEMPLATE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DB_MSG_TEMPLATE">
+          <Property Name="TEMPLATE_CODE" Type="varchar2" MaxLength="120" />
+          <Property Name="SUBJECT" Type="varchar2" MaxLength="160" />
+          <Property Name="CONTENT" Type="varchar2" MaxLength="4000" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="4000" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="SUBJECT_ARABIC" Type="varchar2" MaxLength="160" />
+          <Property Name="CONTENT_ARABIC" Type="varchar2" MaxLength="4000" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COMMITTEES_CUSTOM.DB_SETTINGS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DB_SETTINGS">
+          <Key>
+            <PropertyRef Name="SETTING_CODE" />
+          </Key>
+          <Property Name="SETTING_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="VALUE" Type="varchar2" MaxLength="160" />
+          <Property Name="REMARK" Type="varchar2" MaxLength="4000" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="WS_ATTENDEES">
+          <Key>
+            <PropertyRef Name="ATTENDEE_CODE" />
+          </Key>
+          <Property Name="ATTENDEE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ATTENDED" Type="varchar2" MaxLength="50" />
+          <Property Name="APPROVE" Type="varchar2" MaxLength="50" />
+          <Property Name="MEETING_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COMMITTEE_PERMISSION_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="WS_COMMITTEE_CATEGORIES">
+          <Key>
+            <PropertyRef Name="COMMITTEE_CATEGORY_CODE" />
+          </Key>
+          <Property Name="COMMITTEE_CATEGORY_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="500" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="COMMITTEE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ITEM_CATEGORY" Type="varchar2" MaxLength="50" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="WS_COMMITTEE_PERMISSIONS">
+          <Key>
+            <PropertyRef Name="PERMISSIONS_CODE" />
+          </Key>
+          <Property Name="PERMISSIONS_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="number" Precision="38" Scale="0" />
+          <Property Name="ROLE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COMMITTEE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="varchar2" MaxLength="50" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="WS_COMMITTEES">
+          <Key>
+            <PropertyRef Name="COMMITTEE_CODE" />
+          </Key>
+          <Property Name="COMMITTEE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1000" />
+          <Property Name="ADMIN" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CREATED_DATE" Type="date" Nullable="false" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+          <Property Name="LANGUAGE" Type="varchar2" MaxLength="50" />
+          <Property Name="TITLE_ARABIC" Type="varchar2" MaxLength="50" />
+          <Property Name="DESCRIPTION_ARABIC" Type="varchar2" MaxLength="1000" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="50" />
+          <Property Name="MEETING_NUMBER_START" Type="number" Precision="38" Scale="0" />
+          <Property Name="FINAL_APPROVAL_REQUIRED" Type="varchar2" MaxLength="50" />
+          <Property Name="REVIEW_REQUIRED" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WS_HR_ITEMS">
+          <Key>
+            <PropertyRef Name="HR_ITEM_CODE" />
+          </Key>
+          <Property Name="HR_ITEM_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DEPT_ORG_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="nvarchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="MEETING_ITEM_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+          <Property Name="EMPLOYEE_BANNER_ID" Type="varchar2" MaxLength="100" />
+          <Property Name="EMPLOYEE_NAME" Type="varchar2" MaxLength="1000" />
+          <Property Name="EMPLOYEE_JOB_TITLE" Type="varchar2" MaxLength="1000" />
+          <Property Name="EMPLOYEE_GRADE" Type="varchar2" MaxLength="50" />
+          <Property Name="DEPT_CODE" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WS_ITEM_CATEGORIES">
+          <Key>
+            <PropertyRef Name="ITEM_CATEGORY_CODE" />
+          </Key>
+          <Property Name="ITEM_CATEGORY_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+          <Property Name="TITLE_ARABIC" Type="varchar2" MaxLength="50" />
+          <Property Name="ABBREVIATION" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WS_ITEM_FILES">
+          <Key>
+            <PropertyRef Name="ITEM_FILE_CODE" />
+          </Key>
+          <Property Name="ITEM_FILE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="FILE_BLOB" Type="blob" />
+          <Property Name="MEETING_ITEM_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="1000" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="1000" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="WS_MEETING_ITEMS">
+          <Key>
+            <PropertyRef Name="MEETING_ITEM_CODE" />
+          </Key>
+          <Property Name="MEETING_ITEM_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COMMITTEE_APPROVAL" Type="varchar2" MaxLength="50" />
+          <Property Name="COMMITTEE_RECOMMENDATION" Type="varchar2" MaxLength="50" />
+          <Property Name="REVIEWER_REMARKS" Type="varchar2" MaxLength="4000" />
+          <Property Name="FINAL_APPROVAL" Type="varchar2" MaxLength="50" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="CATEGORY_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="MEETING_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="4000" />
+          <Property Name="REQUEST" Type="varchar2" MaxLength="4000" />
+          <Property Name="EXECUTE_BY" Type="varchar2" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="WS_MEETING_LOG">
+          <Key>
+            <PropertyRef Name="MEETING_LOG_CODE" />
+          </Key>
+          <Property Name="MEETING_LOG_CODE" Type="varchar2" MaxLength="6" Nullable="false" />
+          <Property Name="TEXT" Type="varchar2" MaxLength="4000" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MEETING_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="PERMISSION_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="WS_MEETINGS">
+          <Key>
+            <PropertyRef Name="MEETING_CODE" />
+          </Key>
+          <Property Name="MEETING_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="MEETING_NUMBER" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MEETING_YEAR" Type="number" Precision="38" Scale="0" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="50" />
+          <Property Name="MEETING_DATE_TIME" Type="date" Nullable="false" />
+          <Property Name="LOCATION" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COMMITTEE_APPROVAL" Type="varchar2" MaxLength="50" />
+          <Property Name="FINAL_APPROVAL" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="COMMITTEE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+          <Property Name="START_TIME" Type="varchar2" MaxLength="500" />
+          <Property Name="END_TIME" Type="varchar2" MaxLength="500" />
+          <Property Name="FINAL_APPROVER_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="REVIEWER_CODE" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WS_OTHER_ITEMS">
+          <Key>
+            <PropertyRef Name="OTHER_ITEM_CODE" />
+          </Key>
+          <Property Name="OTHER_ITEM_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="500" />
+          <Property Name="REQUESTER_NAME" Type="varchar2" MaxLength="500" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="varchar2" MaxLength="50" />
+          <Property Name="MEETING_ITEM_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="WS_ROLES">
+          <Key>
+            <PropertyRef Name="ROLE_CODE" />
+          </Key>
+          <Property Name="ROLE_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TITLE_ARABIC" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="REMARKS" Type="varchar2" MaxLength="1000" />
+          <Property Name="DESCRIPTION_ARABIC" Type="varchar2" MaxLength="1000" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1000" />
+          <Property Name="ABBREVIATION" Type="varchar2" MaxLength="50" />
+          <Property Name="ATTEND_MEETING" Type="varchar2" MaxLength="50" />
+          <Property Name="DISPLAY_ORDER" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WS_STATUSES">
+          <Key>
+            <PropertyRef Name="STATUS_CODE" />
+          </Key>
+          <Property Name="STATUS_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="500" />
+          <Property Name="TITLE_ARABIC" Type="varchar2" MaxLength="500" />
+          <Property Name="CREATED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIED_BY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="WS_USERS">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="1000" />
+          <Property Name="NAME_ARABIC" Type="varchar2" MaxLength="1000" />
+          <Property Name="BANNER_ID" Type="varchar2" MaxLength="50" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="50" />
+          <Property Name="ORG_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="ORG_TITLE_ENG" Type="varchar2" MaxLength="1000" />
+          <Property Name="ORG_TITLE_ARA" Type="varchar2" MaxLength="1000" />
+          <Property Name="POSN_NO" Type="varchar2" MaxLength="50" />
+          <Property Name="POSN_TITLE_ENG" Type="varchar2" MaxLength="1000" />
+          <Property Name="POSN_TITLE_ARA" Type="varchar2" MaxLength="1000" />
+          <Property Name="GRADE" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COMMITTEES_CUSTOM.DEPARTMENTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DEPARTMENTS_VW">
+          <Key>
+            <PropertyRef Name="ORG_NAME_ENG" />
+            <PropertyRef Name="ORG_NAME_ARA" />
+          </Key>
+          <Property Name="ORG_CODE" Type="varchar2" MaxLength="15" />
+          <Property Name="ORG_NAME_ENG" Type="varchar2" MaxLength="35" Nullable="false" />
+          <Property Name="ORG_NAME_ARA" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ORG_PARENT_CODE" Type="varchar2" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'COMMITTEES_CUSTOM.DIVISON_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DIVISON_VW">
+          <Key>
+            <PropertyRef Name="ORG_PARENT_NAME_ENG" />
+          </Key>
+          <Property Name="ORG_PARENT_CODE" Type="varchar2" MaxLength="15" />
+          <Property Name="ORG_PARENT_NAME_ENG" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="ORG_PARENT_NAME_ARA" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <Association Name="FINAL_APPROVER_FK">
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="0..1" />
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="PERMISSIONS_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETINGS">
+              <PropertyRef Name="FINAL_APPROVER_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMITTEE_PERMISSIONS_CODE">
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="1" />
+          <End Role="WS_ATTENDEES" Type="Self.WS_ATTENDEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="PERMISSIONS_CODE" />
+            </Principal>
+            <Dependent Role="WS_ATTENDEES">
+              <PropertyRef Name="COMMITTEE_PERMISSION_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEETING_ITEM_CODE">
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_ITEM_FILES" Type="Self.WS_ITEM_FILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Principal>
+            <Dependent Role="WS_ITEM_FILES">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITEE_C_WS_COMMITTEES">
+          <End Role="WS_COMMITTEES" Type="Self.WS_COMMITTEES" Multiplicity="1" />
+          <End Role="WS_COMMITTEE_CATEGORIES" Type="Self.WS_COMMITTEE_CATEGORIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_CATEGORIES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITEE_C_WS_ITEM_CATEG">
+          <End Role="WS_ITEM_CATEGORIES" Type="Self.WS_ITEM_CATEGORIES" Multiplicity="0..1" />
+          <End Role="WS_COMMITTEE_CATEGORIES" Type="Self.WS_COMMITTEE_CATEGORIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_ITEM_CATEGORIES">
+              <PropertyRef Name="ITEM_CATEGORY_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_CATEGORIES">
+              <PropertyRef Name="ITEM_CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITTEES_MEMB_WS_ROLES">
+          <End Role="WS_ROLES" Type="Self.WS_ROLES" Multiplicity="1" />
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_ROLES">
+              <PropertyRef Name="ROLE_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="ROLE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITTEES_WS_COMMITTEES">
+          <End Role="WS_COMMITTEES" Type="Self.WS_COMMITTEES" Multiplicity="1" />
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_HR_ITEMS_WS_MEETING_ITE">
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_HR_ITEMS" Type="Self.WS_HR_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Principal>
+            <Dependent Role="WS_HR_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEETING_IT_WS_COMMITTEE_">
+          <End Role="WS_COMMITTEE_CATEGORIES" Type="Self.WS_COMMITTEE_CATEGORIES" Multiplicity="0..1" />
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_CATEGORIES">
+              <PropertyRef Name="COMMITTEE_CATEGORY_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="CATEGORY_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEETING_ITEM_WS_MEETINGS">
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="0..1" />
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETINGS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEETINGS_WS_COMMITTEES">
+          <End Role="WS_COMMITTEES" Type="Self.WS_COMMITTEES" Multiplicity="1" />
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETINGS">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEMEBER_APPR_WS_MEETINGS">
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="1" />
+          <End Role="WS_ATTENDEES" Type="Self.WS_ATTENDEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETINGS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Principal>
+            <Dependent Role="WS_ATTENDEES">
+              <PropertyRef Name="MEETING_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_OTHER_ITEM_WS_MEETING_IT">
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_OTHER_ITEMS" Type="Self.WS_OTHER_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Principal>
+            <Dependent Role="WS_OTHER_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MEETING_CODE_FK">
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_MEETING_LOG" Type="Self.WS_MEETING_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETINGS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETING_LOG">
+              <PropertyRef Name="MEETING_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REVIEWER_CODE_FK">
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="0..1" />
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="PERMISSIONS_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETINGS">
+              <PropertyRef Name="REVIEWER_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ADD_ATTENDEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PERMISSION_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CREATED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_ATTENDEE_CODE" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="APPROVE_RECOMMENDATIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MEETING_STATUS" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="CHANGE_CHAIR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PERMISSION_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COMMITTEE_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_ATTENDEE_CODE" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="CREATE_HR_ITEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CATEGORY_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REQUEST" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DEPT_ORG_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DEPT_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_BANNER_ID" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_NAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_JOB_TITLE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_GRADE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CREATED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_ITEM_CODE" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_HR_ITEM_CODE" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="CREATE_MEETING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_COMMITTEE_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NUMBER" Type="number" Mode="In" />
+          <Parameter Name="P_YEAR" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LOCATION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DATETIME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_START_TIME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_END_TIME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FINAL_APPROVER_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REVIEWER_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CREATED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="CREATE_OTHER_ITEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CATEGORY_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REQUEST" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_TITLE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REQUESTER_NAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CREATED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_ITEM_CODE" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_OTHER_ITEM_CODE" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="CREATE_PERMISSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ROLE_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_COMMITTEE_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DISPLAY_ORDER" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CREATED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_PERMISSION_CODE" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="DELETE_MEETING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="FINAL_APPROVAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NEW_STATUS" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="F_GET_MSG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM" ReturnType="varchar2">
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="GET_COMMITTEE_REQUIRED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_COMMITTEE_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REVIEW_REQUIRED" Type="pl/sql boolean" Mode="Out" />
+          <Parameter Name="P_FINAL_APPROVAL_REQUIRED" Type="pl/sql boolean" Mode="Out" />
+        </Function>
+        <Function Name="GET_MEETING_NEXT_NUMBER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM" ReturnType="number">
+          <Parameter Name="P_COMMITTEE_CODE" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="INVITE_MEMBERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NEW_STATUS" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="IS_COMMITTEE_READY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM" ReturnType="pl/sql boolean">
+          <Parameter Name="P_COMMITTEE_CODE" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="LOAD_EMPLOYEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_USER_ID" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="MAXIMUM_ONE_MEMEBER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM" ReturnType="pl/sql boolean">
+          <Parameter Name="P_ROLE_ABBRV" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="MEETING_NEXT_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM" ReturnType="varchar2">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="REQUEST_APPROVAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NEW_STATUS" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="REQUEST_FINAL_APPROVAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NEW_STATUS" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="START_MEETING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NEW_STATUS" Type="varchar2" Mode="Out" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="UPDATE_HR_ITEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_CATEGORY_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REQUEST" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DEPT_ORG_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DEPT_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_BANNER_ID" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_NAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_JOB_TITLE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_EMPLOYEE_GRADE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MEETING_ITEM_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_HR_ITEM_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="UPDATE_MEETING_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_MEETING_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="UPDATE_OTHER_ITEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_CATEGORY_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REQUEST" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_TITLE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REQUESTER_NAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MEETING_ITEM_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_OTHER_ITEM_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="UPDATE_PERMISSION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="COMMITTEES_CUSTOM">
+          <Parameter Name="P_PERMISSION_CODE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_STATUS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DISPLAY_ORDER" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MODIFIED_BY" Type="varchar2" Mode="In" />
+          <Parameter Name="P_REMARKS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_LANGUAGE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MSG" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="CommitteesModelStoreContainer">
+          <EntitySet Name="WS_ATTENDEES" EntityType="Self.WS_ATTENDEES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_COMMITTEE_CATEGORIES" EntityType="Self.WS_COMMITTEE_CATEGORIES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_COMMITTEE_PERMISSIONS" EntityType="Self.WS_COMMITTEE_PERMISSIONS" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_COMMITTEES" EntityType="Self.WS_COMMITTEES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_HR_ITEMS" EntityType="Self.WS_HR_ITEMS" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_ITEM_CATEGORIES" EntityType="Self.WS_ITEM_CATEGORIES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_ITEM_FILES" EntityType="Self.WS_ITEM_FILES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_MEETING_ITEMS" EntityType="Self.WS_MEETING_ITEMS" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_MEETING_LOG" EntityType="Self.WS_MEETING_LOG" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_MEETINGS" EntityType="Self.WS_MEETINGS" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_OTHER_ITEMS" EntityType="Self.WS_OTHER_ITEMS" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_ROLES" EntityType="Self.WS_ROLES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_STATUSES" EntityType="Self.WS_STATUSES" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="WS_USERS" EntityType="Self.WS_USERS" Schema="COMMITTEES_CUSTOM" store:Type="Tables" />
+          <EntitySet Name="DB_SETTINGS" EntityType="Self.DB_SETTINGS" store:Type="Tables" store:Schema="COMMITTEES_CUSTOM">
+            <DefiningQuery>SELECT 
+"DB_SETTINGS"."SETTING_CODE" AS "SETTING_CODE", 
+"DB_SETTINGS"."VALUE" AS "VALUE", 
+"DB_SETTINGS"."REMARK" AS "REMARK", 
+"DB_SETTINGS"."CREATED_BY" AS "CREATED_BY", 
+"DB_SETTINGS"."CREATED_DATE" AS "CREATED_DATE", 
+"DB_SETTINGS"."MODIFIED_BY" AS "MODIFIED_BY", 
+"DB_SETTINGS"."MODIFIED_DATE" AS "MODIFIED_DATE"
+FROM "COMMITTEES_CUSTOM"."DB_SETTINGS" "DB_SETTINGS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DEPARTMENTS_VW" EntityType="Self.DEPARTMENTS_VW" store:Type="Views" store:Schema="COMMITTEES_CUSTOM">
+            <DefiningQuery>SELECT 
+"DEPARTMENTS_VW"."ORG_CODE" AS "ORG_CODE", 
+"DEPARTMENTS_VW"."ORG_NAME_ENG" AS "ORG_NAME_ENG", 
+"DEPARTMENTS_VW"."ORG_NAME_ARA" AS "ORG_NAME_ARA", 
+"DEPARTMENTS_VW"."ORG_PARENT_CODE" AS "ORG_PARENT_CODE"
+FROM "COMMITTEES_CUSTOM"."DEPARTMENTS_VW" "DEPARTMENTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DIVISON_VW" EntityType="Self.DIVISON_VW" store:Type="Views" store:Schema="COMMITTEES_CUSTOM">
+            <DefiningQuery>SELECT 
+"DIVISON_VW"."ORG_PARENT_CODE" AS "ORG_PARENT_CODE", 
+"DIVISON_VW"."ORG_PARENT_NAME_ENG" AS "ORG_PARENT_NAME_ENG", 
+"DIVISON_VW"."ORG_PARENT_NAME_ARA" AS "ORG_PARENT_NAME_ARA"
+FROM "COMMITTEES_CUSTOM"."DIVISON_VW" "DIVISON_VW"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FINAL_APPROVER_FK" Association="Self.FINAL_APPROVER_FK">
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMITTEE_PERMISSIONS_CODE" Association="Self.FK_COMMITTEE_PERMISSIONS_CODE">
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+            <End Role="WS_ATTENDEES" EntitySet="WS_ATTENDEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEETING_ITEM_CODE" Association="Self.FK_MEETING_ITEM_CODE">
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+            <End Role="WS_ITEM_FILES" EntitySet="WS_ITEM_FILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITEE_C_WS_COMMITTEES" Association="Self.FK_WS_COMMITEE_C_WS_COMMITTEES">
+            <End Role="WS_COMMITTEES" EntitySet="WS_COMMITTEES" />
+            <End Role="WS_COMMITTEE_CATEGORIES" EntitySet="WS_COMMITTEE_CATEGORIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITEE_C_WS_ITEM_CATEG" Association="Self.FK_WS_COMMITEE_C_WS_ITEM_CATEG">
+            <End Role="WS_ITEM_CATEGORIES" EntitySet="WS_ITEM_CATEGORIES" />
+            <End Role="WS_COMMITTEE_CATEGORIES" EntitySet="WS_COMMITTEE_CATEGORIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITTEES_MEMB_WS_ROLES" Association="Self.FK_WS_COMMITTEES_MEMB_WS_ROLES">
+            <End Role="WS_ROLES" EntitySet="WS_ROLES" />
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITTEES_WS_COMMITTEES" Association="Self.FK_WS_COMMITTEES_WS_COMMITTEES">
+            <End Role="WS_COMMITTEES" EntitySet="WS_COMMITTEES" />
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_HR_ITEMS_WS_MEETING_ITE" Association="Self.FK_WS_HR_ITEMS_WS_MEETING_ITE">
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+            <End Role="WS_HR_ITEMS" EntitySet="WS_HR_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEETING_IT_WS_COMMITTEE_" Association="Self.FK_WS_MEETING_IT_WS_COMMITTEE_">
+            <End Role="WS_COMMITTEE_CATEGORIES" EntitySet="WS_COMMITTEE_CATEGORIES" />
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEETING_ITEM_WS_MEETINGS" Association="Self.FK_WS_MEETING_ITEM_WS_MEETINGS">
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEETINGS_WS_COMMITTEES" Association="Self.FK_WS_MEETINGS_WS_COMMITTEES">
+            <End Role="WS_COMMITTEES" EntitySet="WS_COMMITTEES" />
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEMEBER_APPR_WS_MEETINGS" Association="Self.FK_WS_MEMEBER_APPR_WS_MEETINGS">
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+            <End Role="WS_ATTENDEES" EntitySet="WS_ATTENDEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_OTHER_ITEM_WS_MEETING_IT" Association="Self.FK_WS_OTHER_ITEM_WS_MEETING_IT">
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+            <End Role="WS_OTHER_ITEMS" EntitySet="WS_OTHER_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="MEETING_CODE_FK" Association="Self.MEETING_CODE_FK">
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+            <End Role="WS_MEETING_LOG" EntitySet="WS_MEETING_LOG" />
+          </AssociationSet>
+          <AssociationSet Name="REVIEWER_CODE_FK" Association="Self.REVIEWER_CODE_FK">
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CommitteesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WS_ATTENDEES">
+          <Key>
+            <PropertyRef Name="ATTENDEE_CODE" />
+          </Key>
+          <Property Name="ATTENDEE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ATTENDED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APPROVE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEETING_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMMITTEE_PERMISSION_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <NavigationProperty Name="WS_COMMITTEE_PERMISSIONS" Relationship="Self.FK_COMMITTEE_PERMISSIONS_CODE" FromRole="WS_ATTENDEES" ToRole="WS_COMMITTEE_PERMISSIONS" />
+          <NavigationProperty Name="WS_MEETINGS" Relationship="Self.FK_WS_MEMEBER_APPR_WS_MEETINGS" FromRole="WS_ATTENDEES" ToRole="WS_MEETINGS" />
+        </EntityType>
+        <EntityType Name="WS_COMMITTEE_CATEGORIES">
+          <Key>
+            <PropertyRef Name="COMMITTEE_CATEGORY_CODE" />
+          </Key>
+          <Property Name="COMMITTEE_CATEGORY_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="COMMITTEE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ITEM_CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_COMMITTEES" Relationship="Self.FK_WS_COMMITEE_C_WS_COMMITTEES" FromRole="WS_COMMITTEE_CATEGORIES" ToRole="WS_COMMITTEES" />
+          <NavigationProperty Name="WS_ITEM_CATEGORIES" Relationship="Self.FK_WS_COMMITEE_C_WS_ITEM_CATEG" FromRole="WS_COMMITTEE_CATEGORIES" ToRole="WS_ITEM_CATEGORIES" />
+          <NavigationProperty Name="WS_MEETING_ITEMS" Relationship="Self.FK_WS_MEETING_IT_WS_COMMITTEE_" FromRole="WS_COMMITTEE_CATEGORIES" ToRole="WS_MEETING_ITEMS" />
+        </EntityType>
+        <EntityType Name="WS_COMMITTEE_PERMISSIONS">
+          <Key>
+            <PropertyRef Name="PERMISSIONS_CODE" />
+          </Key>
+          <Property Name="PERMISSIONS_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DISPLAY_ORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ROLE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMMITTEE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_ATTENDEES" Relationship="Self.FK_COMMITTEE_PERMISSIONS_CODE" FromRole="WS_COMMITTEE_PERMISSIONS" ToRole="WS_ATTENDEES" />
+          <NavigationProperty Name="WS_MEETINGS" Relationship="Self.FINAL_APPROVER_FK" FromRole="WS_COMMITTEE_PERMISSIONS" ToRole="WS_MEETINGS" />
+          <NavigationProperty Name="WS_ROLES" Relationship="Self.FK_WS_COMMITTEES_MEMB_WS_ROLES" FromRole="WS_COMMITTEE_PERMISSIONS" ToRole="WS_ROLES" />
+          <NavigationProperty Name="WS_COMMITTEES" Relationship="Self.FK_WS_COMMITTEES_WS_COMMITTEES" FromRole="WS_COMMITTEE_PERMISSIONS" ToRole="WS_COMMITTEES" />
+          <NavigationProperty Name="WS_MEETINGS1" Relationship="Self.REVIEWER_CODE_FK" FromRole="WS_COMMITTEE_PERMISSIONS" ToRole="WS_MEETINGS" />
+        </EntityType>
+        <EntityType Name="WS_COMMITTEES">
+          <Key>
+            <PropertyRef Name="COMMITTEE_CODE" />
+          </Key>
+          <Property Name="COMMITTEE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ADMIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="LANGUAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE_ARABIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION_ARABIC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEETING_NUMBER_START" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FINAL_APPROVAL_REQUIRED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REVIEW_REQUIRED" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_COMMITTEE_CATEGORIES" Relationship="Self.FK_WS_COMMITEE_C_WS_COMMITTEES" FromRole="WS_COMMITTEES" ToRole="WS_COMMITTEE_CATEGORIES" />
+          <NavigationProperty Name="WS_COMMITTEE_PERMISSIONS" Relationship="Self.FK_WS_COMMITTEES_WS_COMMITTEES" FromRole="WS_COMMITTEES" ToRole="WS_COMMITTEE_PERMISSIONS" />
+          <NavigationProperty Name="WS_MEETINGS" Relationship="Self.FK_WS_MEETINGS_WS_COMMITTEES" FromRole="WS_COMMITTEES" ToRole="WS_MEETINGS" />
+        </EntityType>
+        <EntityType Name="WS_HR_ITEMS">
+          <Key>
+            <PropertyRef Name="HR_ITEM_CODE" />
+          </Key>
+          <Property Name="HR_ITEM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEPT_ORG_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="MEETING_ITEM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EMPLOYEE_BANNER_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EMPLOYEE_JOB_TITLE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EMPLOYEE_GRADE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_MEETING_ITEMS" Relationship="Self.FK_WS_HR_ITEMS_WS_MEETING_ITE" FromRole="WS_HR_ITEMS" ToRole="WS_MEETING_ITEMS" />
+        </EntityType>
+        <EntityType Name="WS_ITEM_CATEGORIES">
+          <Key>
+            <PropertyRef Name="ITEM_CATEGORY_CODE" />
+          </Key>
+          <Property Name="ITEM_CATEGORY_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE_ARABIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ABBREVIATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_COMMITTEE_CATEGORIES" Relationship="Self.FK_WS_COMMITEE_C_WS_ITEM_CATEG" FromRole="WS_ITEM_CATEGORIES" ToRole="WS_COMMITTEE_CATEGORIES" />
+        </EntityType>
+        <EntityType Name="WS_ITEM_FILES">
+          <Key>
+            <PropertyRef Name="ITEM_FILE_CODE" />
+          </Key>
+          <Property Name="ITEM_FILE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FILE_BLOB" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MEETING_ITEM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <NavigationProperty Name="WS_MEETING_ITEMS" Relationship="Self.FK_MEETING_ITEM_CODE" FromRole="WS_ITEM_FILES" ToRole="WS_MEETING_ITEMS" />
+        </EntityType>
+        <EntityType Name="WS_MEETING_ITEMS">
+          <Key>
+            <PropertyRef Name="MEETING_ITEM_CODE" />
+          </Key>
+          <Property Name="MEETING_ITEM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMMITTEE_APPROVAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COMMITTEE_RECOMMENDATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REVIEWER_REMARKS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="FINAL_APPROVAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="CATEGORY_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEETING_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="REQUEST" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="EXECUTE_BY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_COMMITTEE_CATEGORIES" Relationship="Self.FK_WS_MEETING_IT_WS_COMMITTEE_" FromRole="WS_MEETING_ITEMS" ToRole="WS_COMMITTEE_CATEGORIES" />
+          <NavigationProperty Name="WS_HR_ITEMS" Relationship="Self.FK_WS_HR_ITEMS_WS_MEETING_ITE" FromRole="WS_MEETING_ITEMS" ToRole="WS_HR_ITEMS" />
+          <NavigationProperty Name="WS_ITEM_FILES" Relationship="Self.FK_MEETING_ITEM_CODE" FromRole="WS_MEETING_ITEMS" ToRole="WS_ITEM_FILES" />
+          <NavigationProperty Name="WS_MEETINGS" Relationship="Self.FK_WS_MEETING_ITEM_WS_MEETINGS" FromRole="WS_MEETING_ITEMS" ToRole="WS_MEETINGS" />
+          <NavigationProperty Name="WS_OTHER_ITEMS" Relationship="Self.FK_WS_OTHER_ITEM_WS_MEETING_IT" FromRole="WS_MEETING_ITEMS" ToRole="WS_OTHER_ITEMS" />
+        </EntityType>
+        <EntityType Name="WS_MEETING_LOG">
+          <Key>
+            <PropertyRef Name="MEETING_LOG_CODE" />
+          </Key>
+          <Property Name="MEETING_LOG_CODE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TEXT" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MEETING_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERMISSION_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_MEETINGS" Relationship="Self.MEETING_CODE_FK" FromRole="WS_MEETING_LOG" ToRole="WS_MEETINGS" />
+        </EntityType>
+        <EntityType Name="WS_MEETINGS">
+          <Key>
+            <PropertyRef Name="MEETING_CODE" />
+          </Key>
+          <Property Name="MEETING_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MEETING_NUMBER" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MEETING_YEAR" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEETING_DATE_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMMITTEE_APPROVAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FINAL_APPROVAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="COMMITTEE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="START_TIME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="END_TIME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FINAL_APPROVER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REVIEWER_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_ATTENDEES" Relationship="Self.FK_WS_MEMEBER_APPR_WS_MEETINGS" FromRole="WS_MEETINGS" ToRole="WS_ATTENDEES" />
+          <NavigationProperty Name="WS_COMMITTEE_PERMISSIONS" Relationship="Self.FINAL_APPROVER_FK" FromRole="WS_MEETINGS" ToRole="WS_COMMITTEE_PERMISSIONS" />
+          <NavigationProperty Name="WS_COMMITTEE_PERMISSIONS1" Relationship="Self.REVIEWER_CODE_FK" FromRole="WS_MEETINGS" ToRole="WS_COMMITTEE_PERMISSIONS" />
+          <NavigationProperty Name="WS_COMMITTEES" Relationship="Self.FK_WS_MEETINGS_WS_COMMITTEES" FromRole="WS_MEETINGS" ToRole="WS_COMMITTEES" />
+          <NavigationProperty Name="WS_MEETING_ITEMS" Relationship="Self.FK_WS_MEETING_ITEM_WS_MEETINGS" FromRole="WS_MEETINGS" ToRole="WS_MEETING_ITEMS" />
+          <NavigationProperty Name="WS_MEETING_LOG" Relationship="Self.MEETING_CODE_FK" FromRole="WS_MEETINGS" ToRole="WS_MEETING_LOG" />
+        </EntityType>
+        <EntityType Name="WS_OTHER_ITEMS">
+          <Key>
+            <PropertyRef Name="OTHER_ITEM_CODE" />
+          </Key>
+          <Property Name="OTHER_ITEM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="REQUESTER_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MEETING_ITEM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_MEETING_ITEMS" Relationship="Self.FK_WS_OTHER_ITEM_WS_MEETING_IT" FromRole="WS_OTHER_ITEMS" ToRole="WS_MEETING_ITEMS" />
+        </EntityType>
+        <EntityType Name="WS_ROLES">
+          <Key>
+            <PropertyRef Name="ROLE_CODE" />
+          </Key>
+          <Property Name="ROLE_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE_ARABIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION_ARABIC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ABBREVIATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTEND_MEETING" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DISPLAY_ORDER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WS_COMMITTEE_PERMISSIONS" Relationship="Self.FK_WS_COMMITTEES_MEMB_WS_ROLES" FromRole="WS_ROLES" ToRole="WS_COMMITTEE_PERMISSIONS" />
+        </EntityType>
+        <EntityType Name="WS_STATUSES">
+          <Key>
+            <PropertyRef Name="STATUS_CODE" />
+          </Key>
+          <Property Name="STATUS_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE_ARABIC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="WS_USERS">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="NAME_ARABIC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="BANNER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_TITLE_ENG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_TITLE_ARA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="POSN_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSN_TITLE_ENG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="POSN_TITLE_ARA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="GRADE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DB_SETTINGS">
+          <Key>
+            <PropertyRef Name="SETTING_CODE" />
+          </Key>
+          <Property Name="SETTING_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Name="REMARK" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="DEPARTMENTS_VW">
+          <Key>
+            <PropertyRef Name="ORG_NAME_ENG" />
+            <PropertyRef Name="ORG_NAME_ARA" />
+          </Key>
+          <Property Name="ORG_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_NAME_ENG" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORG_NAME_ARA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORG_PARENT_CODE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DIVISON_VW">
+          <Key>
+            <PropertyRef Name="ORG_PARENT_NAME_ENG" />
+          </Key>
+          <Property Name="ORG_PARENT_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ORG_PARENT_NAME_ENG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORG_PARENT_NAME_ARA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_COMMITTEE_PERMISSIONS_CODE">
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="1" />
+          <End Role="WS_ATTENDEES" Type="Self.WS_ATTENDEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="PERMISSIONS_CODE" />
+            </Principal>
+            <Dependent Role="WS_ATTENDEES">
+              <PropertyRef Name="COMMITTEE_PERMISSION_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEMEBER_APPR_WS_MEETINGS">
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="1" />
+          <End Role="WS_ATTENDEES" Type="Self.WS_ATTENDEES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETINGS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Principal>
+            <Dependent Role="WS_ATTENDEES">
+              <PropertyRef Name="MEETING_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITEE_C_WS_COMMITTEES">
+          <End Role="WS_COMMITTEES" Type="Self.WS_COMMITTEES" Multiplicity="1" />
+          <End Role="WS_COMMITTEE_CATEGORIES" Type="Self.WS_COMMITTEE_CATEGORIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_CATEGORIES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITEE_C_WS_ITEM_CATEG">
+          <End Role="WS_ITEM_CATEGORIES" Type="Self.WS_ITEM_CATEGORIES" Multiplicity="0..1" />
+          <End Role="WS_COMMITTEE_CATEGORIES" Type="Self.WS_COMMITTEE_CATEGORIES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_ITEM_CATEGORIES">
+              <PropertyRef Name="ITEM_CATEGORY_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_CATEGORIES">
+              <PropertyRef Name="ITEM_CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEETING_IT_WS_COMMITTEE_">
+          <End Role="WS_COMMITTEE_CATEGORIES" Type="Self.WS_COMMITTEE_CATEGORIES" Multiplicity="0..1" />
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_CATEGORIES">
+              <PropertyRef Name="COMMITTEE_CATEGORY_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="CATEGORY_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FINAL_APPROVER_FK">
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="0..1" />
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="PERMISSIONS_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETINGS">
+              <PropertyRef Name="FINAL_APPROVER_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITTEES_MEMB_WS_ROLES">
+          <End Role="WS_ROLES" Type="Self.WS_ROLES" Multiplicity="1" />
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_ROLES">
+              <PropertyRef Name="ROLE_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="ROLE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_COMMITTEES_WS_COMMITTEES">
+          <End Role="WS_COMMITTEES" Type="Self.WS_COMMITTEES" Multiplicity="1" />
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Principal>
+            <Dependent Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REVIEWER_CODE_FK">
+          <End Role="WS_COMMITTEE_PERMISSIONS" Type="Self.WS_COMMITTEE_PERMISSIONS" Multiplicity="0..1" />
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEE_PERMISSIONS">
+              <PropertyRef Name="PERMISSIONS_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETINGS">
+              <PropertyRef Name="REVIEWER_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEETINGS_WS_COMMITTEES">
+          <End Role="WS_COMMITTEES" Type="Self.WS_COMMITTEES" Multiplicity="1" />
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_COMMITTEES">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETINGS">
+              <PropertyRef Name="COMMITTEE_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_HR_ITEMS_WS_MEETING_ITE">
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_HR_ITEMS" Type="Self.WS_HR_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Principal>
+            <Dependent Role="WS_HR_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MEETING_ITEM_CODE">
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_ITEM_FILES" Type="Self.WS_ITEM_FILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Principal>
+            <Dependent Role="WS_ITEM_FILES">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_MEETING_ITEM_WS_MEETINGS">
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="0..1" />
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETINGS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WS_OTHER_ITEM_WS_MEETING_IT">
+          <End Role="WS_MEETING_ITEMS" Type="Self.WS_MEETING_ITEMS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_OTHER_ITEMS" Type="Self.WS_OTHER_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETING_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Principal>
+            <Dependent Role="WS_OTHER_ITEMS">
+              <PropertyRef Name="MEETING_ITEM_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MEETING_CODE_FK">
+          <End Role="WS_MEETINGS" Type="Self.WS_MEETINGS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WS_MEETING_LOG" Type="Self.WS_MEETING_LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WS_MEETINGS">
+              <PropertyRef Name="MEETING_CODE" />
+            </Principal>
+            <Dependent Role="WS_MEETING_LOG">
+              <PropertyRef Name="MEETING_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CommitteesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WS_ATTENDEES" EntityType="Self.WS_ATTENDEES" />
+          <EntitySet Name="WS_COMMITTEE_CATEGORIES" EntityType="Self.WS_COMMITTEE_CATEGORIES" />
+          <EntitySet Name="WS_COMMITTEE_PERMISSIONS" EntityType="Self.WS_COMMITTEE_PERMISSIONS" />
+          <EntitySet Name="WS_COMMITTEES" EntityType="Self.WS_COMMITTEES" />
+          <EntitySet Name="WS_HR_ITEMS" EntityType="Self.WS_HR_ITEMS" />
+          <EntitySet Name="WS_ITEM_CATEGORIES" EntityType="Self.WS_ITEM_CATEGORIES" />
+          <EntitySet Name="WS_ITEM_FILES" EntityType="Self.WS_ITEM_FILES" />
+          <EntitySet Name="WS_MEETING_ITEMS" EntityType="Self.WS_MEETING_ITEMS" />
+          <EntitySet Name="WS_MEETING_LOG" EntityType="Self.WS_MEETING_LOG" />
+          <EntitySet Name="WS_MEETINGS" EntityType="Self.WS_MEETINGS" />
+          <EntitySet Name="WS_OTHER_ITEMS" EntityType="Self.WS_OTHER_ITEMS" />
+          <EntitySet Name="WS_ROLES" EntityType="Self.WS_ROLES" />
+          <EntitySet Name="WS_STATUSES" EntityType="Self.WS_STATUSES" />
+          <EntitySet Name="WS_USERS" EntityType="Self.WS_USERS" />
+          <EntitySet Name="DB_SETTINGS" EntityType="Self.DB_SETTINGS" />
+          <EntitySet Name="DEPARTMENTS_VW" EntityType="Self.DEPARTMENTS_VW" />
+          <EntitySet Name="DIVISON_VW" EntityType="Self.DIVISON_VW" />
+          <AssociationSet Name="FK_COMMITTEE_PERMISSIONS_CODE" Association="Self.FK_COMMITTEE_PERMISSIONS_CODE">
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+            <End Role="WS_ATTENDEES" EntitySet="WS_ATTENDEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEMEBER_APPR_WS_MEETINGS" Association="Self.FK_WS_MEMEBER_APPR_WS_MEETINGS">
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+            <End Role="WS_ATTENDEES" EntitySet="WS_ATTENDEES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITEE_C_WS_COMMITTEES" Association="Self.FK_WS_COMMITEE_C_WS_COMMITTEES">
+            <End Role="WS_COMMITTEES" EntitySet="WS_COMMITTEES" />
+            <End Role="WS_COMMITTEE_CATEGORIES" EntitySet="WS_COMMITTEE_CATEGORIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITEE_C_WS_ITEM_CATEG" Association="Self.FK_WS_COMMITEE_C_WS_ITEM_CATEG">
+            <End Role="WS_ITEM_CATEGORIES" EntitySet="WS_ITEM_CATEGORIES" />
+            <End Role="WS_COMMITTEE_CATEGORIES" EntitySet="WS_COMMITTEE_CATEGORIES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEETING_IT_WS_COMMITTEE_" Association="Self.FK_WS_MEETING_IT_WS_COMMITTEE_">
+            <End Role="WS_COMMITTEE_CATEGORIES" EntitySet="WS_COMMITTEE_CATEGORIES" />
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FINAL_APPROVER_FK" Association="Self.FINAL_APPROVER_FK">
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITTEES_MEMB_WS_ROLES" Association="Self.FK_WS_COMMITTEES_MEMB_WS_ROLES">
+            <End Role="WS_ROLES" EntitySet="WS_ROLES" />
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_COMMITTEES_WS_COMMITTEES" Association="Self.FK_WS_COMMITTEES_WS_COMMITTEES">
+            <End Role="WS_COMMITTEES" EntitySet="WS_COMMITTEES" />
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+          </AssociationSet>
+          <AssociationSet Name="REVIEWER_CODE_FK" Association="Self.REVIEWER_CODE_FK">
+            <End Role="WS_COMMITTEE_PERMISSIONS" EntitySet="WS_COMMITTEE_PERMISSIONS" />
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEETINGS_WS_COMMITTEES" Association="Self.FK_WS_MEETINGS_WS_COMMITTEES">
+            <End Role="WS_COMMITTEES" EntitySet="WS_COMMITTEES" />
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_HR_ITEMS_WS_MEETING_ITE" Association="Self.FK_WS_HR_ITEMS_WS_MEETING_ITE">
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+            <End Role="WS_HR_ITEMS" EntitySet="WS_HR_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MEETING_ITEM_CODE" Association="Self.FK_MEETING_ITEM_CODE">
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+            <End Role="WS_ITEM_FILES" EntitySet="WS_ITEM_FILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_MEETING_ITEM_WS_MEETINGS" Association="Self.FK_WS_MEETING_ITEM_WS_MEETINGS">
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WS_OTHER_ITEM_WS_MEETING_IT" Association="Self.FK_WS_OTHER_ITEM_WS_MEETING_IT">
+            <End Role="WS_MEETING_ITEMS" EntitySet="WS_MEETING_ITEMS" />
+            <End Role="WS_OTHER_ITEMS" EntitySet="WS_OTHER_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="MEETING_CODE_FK" Association="Self.MEETING_CODE_FK">
+            <End Role="WS_MEETINGS" EntitySet="WS_MEETINGS" />
+            <End Role="WS_MEETING_LOG" EntitySet="WS_MEETING_LOG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CommitteesModelStoreContainer" CdmEntityContainer="CommitteesEntities">
+          <EntitySetMapping Name="WS_ATTENDEES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_ATTENDEES">
+              <MappingFragment StoreEntitySet="WS_ATTENDEES">
+                <ScalarProperty Name="ATTENDEE_CODE" ColumnName="ATTENDEE_CODE" />
+                <ScalarProperty Name="ATTENDED" ColumnName="ATTENDED" />
+                <ScalarProperty Name="APPROVE" ColumnName="APPROVE" />
+                <ScalarProperty Name="MEETING_CODE" ColumnName="MEETING_CODE" />
+                <ScalarProperty Name="COMMITTEE_PERMISSION_CODE" ColumnName="COMMITTEE_PERMISSION_CODE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_COMMITTEE_CATEGORIES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_COMMITTEE_CATEGORIES">
+              <MappingFragment StoreEntitySet="WS_COMMITTEE_CATEGORIES">
+                <ScalarProperty Name="COMMITTEE_CATEGORY_CODE" ColumnName="COMMITTEE_CATEGORY_CODE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="DISPLAY_ORDER" ColumnName="DISPLAY_ORDER" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="COMMITTEE_CODE" ColumnName="COMMITTEE_CODE" />
+                <ScalarProperty Name="ITEM_CATEGORY" ColumnName="ITEM_CATEGORY" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_COMMITTEE_PERMISSIONS">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_COMMITTEE_PERMISSIONS">
+              <MappingFragment StoreEntitySet="WS_COMMITTEE_PERMISSIONS">
+                <ScalarProperty Name="PERMISSIONS_CODE" ColumnName="PERMISSIONS_CODE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DISPLAY_ORDER" ColumnName="DISPLAY_ORDER" />
+                <ScalarProperty Name="ROLE_CODE" ColumnName="ROLE_CODE" />
+                <ScalarProperty Name="COMMITTEE_CODE" ColumnName="COMMITTEE_CODE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_COMMITTEES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_COMMITTEES">
+              <MappingFragment StoreEntitySet="WS_COMMITTEES">
+                <ScalarProperty Name="COMMITTEE_CODE" ColumnName="COMMITTEE_CODE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ADMIN" ColumnName="ADMIN" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="LANGUAGE" ColumnName="LANGUAGE" />
+                <ScalarProperty Name="TITLE_ARABIC" ColumnName="TITLE_ARABIC" />
+                <ScalarProperty Name="DESCRIPTION_ARABIC" ColumnName="DESCRIPTION_ARABIC" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MEETING_NUMBER_START" ColumnName="MEETING_NUMBER_START" />
+                <ScalarProperty Name="FINAL_APPROVAL_REQUIRED" ColumnName="FINAL_APPROVAL_REQUIRED" />
+                <ScalarProperty Name="REVIEW_REQUIRED" ColumnName="REVIEW_REQUIRED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_HR_ITEMS">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_HR_ITEMS">
+              <MappingFragment StoreEntitySet="WS_HR_ITEMS">
+                <ScalarProperty Name="HR_ITEM_CODE" ColumnName="HR_ITEM_CODE" />
+                <ScalarProperty Name="DEPT_ORG_CODE" ColumnName="DEPT_ORG_CODE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="MEETING_ITEM_CODE" ColumnName="MEETING_ITEM_CODE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="EMPLOYEE_BANNER_ID" ColumnName="EMPLOYEE_BANNER_ID" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
+                <ScalarProperty Name="EMPLOYEE_JOB_TITLE" ColumnName="EMPLOYEE_JOB_TITLE" />
+                <ScalarProperty Name="EMPLOYEE_GRADE" ColumnName="EMPLOYEE_GRADE" />
+                <ScalarProperty Name="DEPT_CODE" ColumnName="DEPT_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_ITEM_CATEGORIES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_ITEM_CATEGORIES">
+              <MappingFragment StoreEntitySet="WS_ITEM_CATEGORIES">
+                <ScalarProperty Name="ITEM_CATEGORY_CODE" ColumnName="ITEM_CATEGORY_CODE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="TITLE_ARABIC" ColumnName="TITLE_ARABIC" />
+                <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_ITEM_FILES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_ITEM_FILES">
+              <MappingFragment StoreEntitySet="WS_ITEM_FILES">
+                <ScalarProperty Name="ITEM_FILE_CODE" ColumnName="ITEM_FILE_CODE" />
+                <ScalarProperty Name="FILE_BLOB" ColumnName="FILE_BLOB" />
+                <ScalarProperty Name="MEETING_ITEM_CODE" ColumnName="MEETING_ITEM_CODE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_MEETING_ITEMS">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_MEETING_ITEMS">
+              <MappingFragment StoreEntitySet="WS_MEETING_ITEMS">
+                <ScalarProperty Name="MEETING_ITEM_CODE" ColumnName="MEETING_ITEM_CODE" />
+                <ScalarProperty Name="COMMITTEE_APPROVAL" ColumnName="COMMITTEE_APPROVAL" />
+                <ScalarProperty Name="COMMITTEE_RECOMMENDATION" ColumnName="COMMITTEE_RECOMMENDATION" />
+                <ScalarProperty Name="REVIEWER_REMARKS" ColumnName="REVIEWER_REMARKS" />
+                <ScalarProperty Name="FINAL_APPROVAL" ColumnName="FINAL_APPROVAL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="CATEGORY_CODE" ColumnName="CATEGORY_CODE" />
+                <ScalarProperty Name="MEETING_CODE" ColumnName="MEETING_CODE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="EXECUTE_BY" ColumnName="EXECUTE_BY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_MEETING_LOG">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_MEETING_LOG">
+              <MappingFragment StoreEntitySet="WS_MEETING_LOG">
+                <ScalarProperty Name="MEETING_LOG_CODE" ColumnName="MEETING_LOG_CODE" />
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MEETING_CODE" ColumnName="MEETING_CODE" />
+                <ScalarProperty Name="PERMISSION_CODE" ColumnName="PERMISSION_CODE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_MEETINGS">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_MEETINGS">
+              <MappingFragment StoreEntitySet="WS_MEETINGS">
+                <ScalarProperty Name="MEETING_CODE" ColumnName="MEETING_CODE" />
+                <ScalarProperty Name="MEETING_NUMBER" ColumnName="MEETING_NUMBER" />
+                <ScalarProperty Name="MEETING_YEAR" ColumnName="MEETING_YEAR" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MEETING_DATE_TIME" ColumnName="MEETING_DATE_TIME" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="COMMITTEE_APPROVAL" ColumnName="COMMITTEE_APPROVAL" />
+                <ScalarProperty Name="FINAL_APPROVAL" ColumnName="FINAL_APPROVAL" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="COMMITTEE_CODE" ColumnName="COMMITTEE_CODE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="START_TIME" ColumnName="START_TIME" />
+                <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+                <ScalarProperty Name="FINAL_APPROVER_CODE" ColumnName="FINAL_APPROVER_CODE" />
+                <ScalarProperty Name="REVIEWER_CODE" ColumnName="REVIEWER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_OTHER_ITEMS">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_OTHER_ITEMS">
+              <MappingFragment StoreEntitySet="WS_OTHER_ITEMS">
+                <ScalarProperty Name="OTHER_ITEM_CODE" ColumnName="OTHER_ITEM_CODE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="REQUESTER_NAME" ColumnName="REQUESTER_NAME" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="MEETING_ITEM_CODE" ColumnName="MEETING_ITEM_CODE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_ROLES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_ROLES">
+              <MappingFragment StoreEntitySet="WS_ROLES">
+                <ScalarProperty Name="ROLE_CODE" ColumnName="ROLE_CODE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="TITLE_ARABIC" ColumnName="TITLE_ARABIC" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="DESCRIPTION_ARABIC" ColumnName="DESCRIPTION_ARABIC" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ABBREVIATION" ColumnName="ABBREVIATION" />
+                <ScalarProperty Name="ATTEND_MEETING" ColumnName="ATTEND_MEETING" />
+                <ScalarProperty Name="DISPLAY_ORDER" ColumnName="DISPLAY_ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_STATUSES">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_STATUSES">
+              <MappingFragment StoreEntitySet="WS_STATUSES">
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="TITLE_ARABIC" ColumnName="TITLE_ARABIC" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WS_USERS">
+            <EntityTypeMapping TypeName="CommitteesModel.WS_USERS">
+              <MappingFragment StoreEntitySet="WS_USERS">
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="NAME_ARABIC" ColumnName="NAME_ARABIC" />
+                <ScalarProperty Name="BANNER_ID" ColumnName="BANNER_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="ORG_CODE" ColumnName="ORG_CODE" />
+                <ScalarProperty Name="ORG_TITLE_ENG" ColumnName="ORG_TITLE_ENG" />
+                <ScalarProperty Name="ORG_TITLE_ARA" ColumnName="ORG_TITLE_ARA" />
+                <ScalarProperty Name="POSN_NO" ColumnName="POSN_NO" />
+                <ScalarProperty Name="POSN_TITLE_ENG" ColumnName="POSN_TITLE_ENG" />
+                <ScalarProperty Name="POSN_TITLE_ARA" ColumnName="POSN_TITLE_ARA" />
+                <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DB_SETTINGS">
+            <EntityTypeMapping TypeName="CommitteesModel.DB_SETTINGS">
+              <MappingFragment StoreEntitySet="DB_SETTINGS">
+                <ScalarProperty Name="SETTING_CODE" ColumnName="SETTING_CODE" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTMENTS_VW">
+            <EntityTypeMapping TypeName="CommitteesModel.DEPARTMENTS_VW">
+              <MappingFragment StoreEntitySet="DEPARTMENTS_VW">
+                <ScalarProperty Name="ORG_CODE" ColumnName="ORG_CODE" />
+                <ScalarProperty Name="ORG_NAME_ENG" ColumnName="ORG_NAME_ENG" />
+                <ScalarProperty Name="ORG_NAME_ARA" ColumnName="ORG_NAME_ARA" />
+                <ScalarProperty Name="ORG_PARENT_CODE" ColumnName="ORG_PARENT_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIVISON_VW">
+            <EntityTypeMapping TypeName="CommitteesModel.DIVISON_VW">
+              <MappingFragment StoreEntitySet="DIVISON_VW">
+                <ScalarProperty Name="ORG_PARENT_CODE" ColumnName="ORG_PARENT_CODE" />
+                <ScalarProperty Name="ORG_PARENT_NAME_ENG" ColumnName="ORG_PARENT_NAME_ENG" />
+                <ScalarProperty Name="ORG_PARENT_NAME_ARA" ColumnName="ORG_PARENT_NAME_ARA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
